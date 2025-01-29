@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+
+    options {
+        buildDiscarder logRotator(
+            daysToKeepStr: '16',   // Keep builds for 16 days before discarding
+            numToKeepStr: '10'     // Keep only the last 10 builds, even if they are within 16 days
+        )
+    }
+
+    stages {
+        stage('Cleanup workspace') {
+            cleanWs()
+            bat 'echo Cleaned up workspace for project'
+        }
+
+        stage('Checkout scm') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
+                ])
+            }
+        }
+
+        stage('Unit testing'){
+            steps {
+                bat 'echo Testing...'
+            }   
+        }
+
+        stage('Code analysis') {
+            steps {
+                bat 'Running code analysis...'
+            }
+        }
+
+        stage('Deploy code to Dev & QA') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                bat 'Building artifact for Dev environment'
+                bat 'Deploying to Dev environment'
+                bat 'Deploying to QA environment'
+            }
+        }
+
+        stage('Deploy code to Staging and Pre-Prod') {
+            when {
+                branch 'main'
+            }
+            steps {
+                bat 'Building artifact for Staging and Pre-Prod environment'
+                bat 'Deploying to Staging environment'
+                bat 'Deploying to Pre-Prod environment'
+            }
+        }
+    }
+}
