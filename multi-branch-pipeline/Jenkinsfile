@@ -10,8 +10,10 @@ pipeline {
 
     stages {
         stage('Cleanup workspace') {
-            cleanWs()
-            bat 'echo Cleaned up workspace for project'
+            steps {
+                cleanWs()
+                bat 'echo Cleaned up workspace for project'
+            }
         }
 
         stage('Checkout scm') {
