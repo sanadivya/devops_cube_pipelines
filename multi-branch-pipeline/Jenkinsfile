@@ -28,13 +28,13 @@ pipeline {
 
         stage('Unit testing'){
             steps {
-                bat 'echo Testing...'
+                bat 'echo Testing'
             }   
         }
 
         stage('Code analysis') {
             steps {
-                bat 'echo Running code analysis...'
+                bat 'echo Running Code Analysis'
             }
         }
 
