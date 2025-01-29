@@ -34,7 +34,7 @@ pipeline {
 
         stage('Code analysis') {
             steps {
-                bat 'Running code analysis...'
+                bat 'echo Running code analysis...'
             }
         }
 
@@ -43,9 +43,9 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                bat 'Building artifact for Dev environment'
-                bat 'Deploying to Dev environment'
-                bat 'Deploying to QA environment'
+                bat 'echo Building artifact for Dev environment'
+                bat 'echo Deploying to Dev environment'
+                bat 'echo Deploying to QA environment'
             }
         }
 
@@ -54,9 +54,9 @@ pipeline {
                 branch 'main'
             }
             steps {
-                bat 'Building artifact for Staging and Pre-Prod environment'
-                bat 'Deploying to Staging environment'
-                bat 'Deploying to Pre-Prod environment'
+                bat 'echo Building artifact for Staging and Pre-Prod environment'
+                bat 'echo Deploying to Staging environment'
+                bat 'echo Deploying to Pre-Prod environment'
             }
         }
     }
