@@ -4,3 +4,6 @@ Line 3 from feature2
 Line 4 from feature2
 Line 5 from feature2
 Line 6 from feature2
+Line 7 from feature2
+Line 8 from feature2
+Line 9 from feature2
