@@ -7,3 +7,4 @@ Line 6 from feature2
 Line 7 from feature2
 Line 8 from feature2
 Line 9 from feature2
+Line 10 from feature2
